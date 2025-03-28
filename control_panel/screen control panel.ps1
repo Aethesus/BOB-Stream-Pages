@@ -56,7 +56,7 @@ $buttonReset_Click = {
     $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($for_js_enemyImage)
     $selectTournament.SelectedIndex = 0
 
-    $for_js_tournament = "Primeleague"
+    $for_js_tournament = "Tournament"
     $for_js_gameday = "Gameday"
     $for_js_matchup = "Matchup"
     $for_js_homeImage = $teamImages["Team BOB"]
