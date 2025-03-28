@@ -22,6 +22,7 @@ $PageControls = New-Object -TypeName System.Windows.Forms.Form
 function InitializeComponent {
     $pagesControl = (New-Object -TypeName System.Windows.Forms.TabControl)
     $pageMatchup = (New-Object -TypeName System.Windows.Forms.TabPage)
+    $setCustomTournament = (New-Object -TypeName System.Windows.Forms.TextBox)
     $buttonReset = (New-Object -TypeName System.Windows.Forms.Button)
     $buttonApply = (New-Object -TypeName System.Windows.Forms.Button)
     $pictureEnemyTeam = (New-Object -TypeName System.Windows.Forms.PictureBox)
@@ -39,7 +40,6 @@ function InitializeComponent {
     $selectTournament = (New-Object -TypeName System.Windows.Forms.ComboBox)
     $pagePlayerSpotlight = (New-Object -TypeName System.Windows.Forms.TabPage)
     $pageComingSoon = (New-Object -TypeName System.Windows.Forms.TabPage)
-    $setCustomTournament = (New-Object -TypeName System.Windows.Forms.TextBox)
     $pagesControl.SuspendLayout()
     $pageMatchup.SuspendLayout()
 ([System.ComponentModel.ISupportInitialize]$pictureEnemyTeam).BeginInit()
@@ -83,6 +83,14 @@ function InitializeComponent {
     $pageMatchup.Text = [System.String]'Matchpage'
     $pageMatchup.UseVisualStyleBackColor = $true
     $pageMatchup.add_Click($OpenFileDialog1_FileOk)
+    #
+    #setCustomTournament
+    #
+    $setCustomTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]320, [System.Int32]54))
+    $setCustomTournament.Name = [System.String]'setCustomTournament'
+    $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]148, [System.Int32]21))
+    $setCustomTournament.TabIndex = [System.Int32]19
+    $setCustomTournament.add_TextChanged($setCustomTournament_TextChanged)
     #
     #buttonReset
     #
@@ -132,7 +140,7 @@ function InitializeComponent {
     $labelEnemyTeam.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]127, [System.Int32]23))
     $labelEnemyTeam.TabIndex = [System.Int32]14
     $labelEnemyTeam.Text = [System.String]'Enemy Team'
-    $labelEnemyTeam.add_Click($Label7_Click)
+    $labelEnemyTeam.add_Click($labelEnemyTeam_Click)
     #
     #selectEnemyImage
     #
@@ -173,7 +181,7 @@ function InitializeComponent {
     $labelMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
     $labelMatchup.TabIndex = [System.Int32]6
     $labelMatchup.Text = [System.String]'Matchup'
-    $labelMatchup.add_Click($Label5_Click)
+    $labelMatchup.add_Click($labelMatchup_Click)
     #
     #labelGameday
     #
@@ -183,7 +191,7 @@ function InitializeComponent {
     $labelGameday.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
     $labelGameday.TabIndex = [System.Int32]5
     $labelGameday.Text = [System.String]'Gameday'
-    $labelGameday.add_Click($Label3_Click)
+    $labelGameday.add_Click($labelGameday_Click)
     #
     #labelTournament
     #
@@ -193,7 +201,7 @@ function InitializeComponent {
     $labelTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
     $labelTournament.TabIndex = [System.Int32]4
     $labelTournament.Text = [System.String]'Tournament'
-    $labelTournament.add_Click($Label2_Click)
+    $labelTournament.add_Click($labelTournament_Click)
     #
     #setMatchup
     #
@@ -248,14 +256,6 @@ function InitializeComponent {
     $pageComingSoon.TabIndex = [System.Int32]2
     $pageComingSoon.Text = [System.String]'Coming Soon ...'
     $pageComingSoon.UseVisualStyleBackColor = $true
-    #
-    #setCustomTournament
-    #
-    $setCustomTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]320, [System.Int32]54))
-    $setCustomTournament.Name = [System.String]'setCustomTournament'
-    $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]148, [System.Int32]21))
-    $setCustomTournament.TabIndex = [System.Int32]19
-    $setCustomTournament.add_TextChanged($setCustomTournament_TextChanged)
     #
     #PageControls
     #
