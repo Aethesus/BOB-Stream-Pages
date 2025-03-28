@@ -1,22 +1,18 @@
-$TextBox1_TextChanged = {
+$teamImages = @{
+    "Team BOB" = "D:\BOB-Stream-Pages\icons\bob_logo_shadow.png"
+    "Team BBY" = "D:\BOB-Stream-Pages\icons\bby_logo_shadow.png"
+}
+
+$setCustomTournament_TextChanged = {
+    $selectTournament_content = $setCustomTournament.Text
 }
 $selectHomeTeamImage_SelectedIndexChanged = {
-    # Get the selected team
     $selectedTeam = $selectHomeTeamImage.SelectedItem
 
-    # Define the image paths for each team
-    $teamImages = @{
-        "Team BOB" = "D:\BOB-Stream-Pages\icons\bob_logo_shadow.png"
-        "Team BBY" = "D:\BOB-Stream-Pages\icons\bby_logo_shadow.png"
-    }
-
-    # Check if the selected team has a corresponding image
     if ($teamImages.ContainsKey($selectedTeam)) {
-        # Load the image into the PictureBox
         $pictureHomeTeam.Image = [System.Drawing.Image]::FromFile($teamImages[$selectedTeam])
     }
     else {
-        # Clear the PictureBox if no image is found
         $pictureHomeTeam.Image = $null
     }
 }
@@ -26,6 +22,8 @@ $selectTournament_SelectedIndexChanged = {
         $setMatchup.ReadOnly = $true
         $setCustomTournament.ReadOnly = $true
         $selectEnemyImage.Enabled = $false
+
+        $selectTournament_content = $selectTournament.SelectedItem
     }
     else {
         $setGameday.ReadOnly = $false
@@ -33,6 +31,20 @@ $selectTournament_SelectedIndexChanged = {
         $setCustomTournament.ReadOnly = $false
         $selectEnemyImage.Enabled = $true
     }
+}
+$buttonReset_Click = {
+
+}
+$buttonApply_Click = {
+    if ($selectTournament.SelectedItem -eq "Primeleague") {
+        Write-Host "Tournament name: Primeleague"
+    }
+    else {
+        Write-Host "Tournament name:" $setCustomTournament.Text
+    }
+    $selectedTeam = $selectHomeTeamImage.SelectedItem
+
+    Write-Host "Home image path: " $($teamImages[$selectedTeam])
 }
 $Label2_Click = {
 }
@@ -44,7 +56,7 @@ $Label7_Click = {
 }
 $OpenFileDialog1_FileOk = {
 }
-$Button1_Click = {
+$selectEnemyImage_Click = {
     $OpenFileDialog = New-Object -TypeName System.Windows.Forms.OpenFileDialog
     $OpenFileDialog.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp|All Files (*.*)|*.*"
     $OpenFileDialog.Title = "Select an Image File"

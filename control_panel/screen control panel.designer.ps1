@@ -92,6 +92,7 @@ function InitializeComponent {
     $buttonReset.TabIndex = [System.Int32]18
     $buttonReset.Text = [System.String]'Reset'
     $buttonReset.UseVisualStyleBackColor = $true
+    $buttonReset.add_Click($buttonReset_Click)
     #
     #buttonApply
     #
@@ -101,6 +102,7 @@ function InitializeComponent {
     $buttonApply.TabIndex = [System.Int32]17
     $buttonApply.Text = [System.String]'Apply'
     $buttonApply.UseVisualStyleBackColor = $true
+    $buttonApply.add_Click($buttonApply_Click)
     #
     #pictureEnemyTeam
     #
@@ -141,7 +143,7 @@ function InitializeComponent {
     $selectEnemyImage.TabIndex = [System.Int32]13
     $selectEnemyImage.Text = [System.String]'Select Image'
     $selectEnemyImage.UseVisualStyleBackColor = $true
-    $selectEnemyImage.add_Click($Button1_Click)
+    $selectEnemyImage.add_Click($selectEnemyImage_Click)
     #
     #labelHomeTeam
     #
@@ -161,6 +163,7 @@ function InitializeComponent {
     $selectHomeTeamImage.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]150, [System.Int32]21))
     $selectHomeTeamImage.TabIndex = [System.Int32]11
     $selectHomeTeamImage.add_SelectedIndexChanged($selectHomeTeamImage_SelectedIndexChanged)
+    $selectHomeTeamImage.SelectedIndex = 0
     #
     #labelMatchup
     #
@@ -225,6 +228,7 @@ function InitializeComponent {
     $selectTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
     $selectTournament.TabIndex = [System.Int32]0
     $selectTournament.add_SelectedIndexChanged($selectTournament_SelectedIndexChanged)
+    $selectTournament.SelectedIndex = 0
     #
     #pagePlayerSpotlight
     #
@@ -251,7 +255,7 @@ function InitializeComponent {
     $setCustomTournament.Name = [System.String]'setCustomTournament'
     $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]148, [System.Int32]21))
     $setCustomTournament.TabIndex = [System.Int32]19
-    $setCustomTournament.add_TextChanged($TextBox1_TextChanged)
+    $setCustomTournament.add_TextChanged($setCustomTournament_TextChanged)
     #
     #PageControls
     #
