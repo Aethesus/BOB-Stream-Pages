@@ -86,9 +86,9 @@ function InitializeComponent {
     #
     #setCustomTournament
     #
-    $setCustomTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]320, [System.Int32]54))
+    $setCustomTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]81))
     $setCustomTournament.Name = [System.String]'setCustomTournament'
-    $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]148, [System.Int32]21))
+    $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
     $setCustomTournament.TabIndex = [System.Int32]19
     $setCustomTournament.add_TextChanged($setCustomTournament_TextChanged)
     #
@@ -176,7 +176,7 @@ function InitializeComponent {
     #labelMatchup
     #
     $labelMatchup.Font = (New-Object -TypeName System.Drawing.Font -ArgumentList @([System.String]'Microsoft Sans Serif', [System.Single]12, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Point, ([System.Byte][System.Byte]0)))
-    $labelMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]108))
+    $labelMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]135))
     $labelMatchup.Name = [System.String]'labelMatchup'
     $labelMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
     $labelMatchup.TabIndex = [System.Int32]6
@@ -186,7 +186,7 @@ function InitializeComponent {
     #labelGameday
     #
     $labelGameday.Font = (New-Object -TypeName System.Drawing.Font -ArgumentList @([System.String]'Microsoft Sans Serif', [System.Single]12))
-    $labelGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]83))
+    $labelGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]110))
     $labelGameday.Name = [System.String]'labelGameday'
     $labelGameday.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
     $labelGameday.TabIndex = [System.Int32]5
@@ -205,7 +205,7 @@ function InitializeComponent {
     #
     #setMatchup
     #
-    $setMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]108))
+    $setMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]135))
     $setMatchup.Multiline = $true
     $setMatchup.Name = [System.String]'setMatchup'
     $setMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
@@ -213,7 +213,7 @@ function InitializeComponent {
     #
     #setGameday
     #
-    $setGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]81))
+    $setGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]108))
     $setGameday.Name = [System.String]'setGameday'
     $setGameday.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
     $setGameday.TabIndex = [System.Int32]2

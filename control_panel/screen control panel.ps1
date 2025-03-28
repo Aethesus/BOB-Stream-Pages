@@ -1,15 +1,18 @@
+$OpenFileDialog1_FileOk = {
+}
+Add-Type -AssemblyName "System.Drawing"
+
 $teamImages = @{
     "Team BOB"         = "D:\BOB-Stream-Pages\icons\bob_logo_shadow.png"
     "Team BBY"         = "D:\BOB-Stream-Pages\icons\bby_logo_shadow.png"
     "Team Placeholder" = "D:\BOB-Stream-Pages\icons\placeholder_logo.png"
 }
 
-$for_js_tournament = "Tournament"
+$for_js_tournament = "Primeleague"
 $for_js_gameday = "Gameday"
 $for_js_matchup = "Matchup"
 $for_js_homeImage = $teamImages["Team BOB"]
 $for_js_enemyImage = $teamImages["Team Placeholder"]
-
 
 $labelTournament_Click = {
 }
@@ -49,18 +52,48 @@ $selectTournament_SelectedIndexChanged = {
     }
 }
 $buttonReset_Click = {
+    $selectHomeTeamImage.SelectedIndex = 0
+    $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($for_js_enemyImage)
+    $selectTournament.SelectedIndex = 0
 
+    $for_js_tournament = "Primeleague"
+    $for_js_gameday = "Gameday"
+    $for_js_matchup = "Matchup"
+    $for_js_homeImage = $teamImages["Team BOB"]
+    $for_js_enemyImage = $teamImages["Team Placeholder"]
+
+    $setCustomTournament.Text = ""
+    $setGameday.Text = $for_js_gameday
+    $setMatchup.Text = $for_js_matchup
+
+    Clear-Host
+    Write-Host "$for_js_tournament
+$for_js_gameday
+$for_js_matchup
+$for_js_homeImage
+$for_js_enemyImage"
 }
 $buttonApply_Click = {
     if ($selectTournament.SelectedItem -eq "Primeleague") {
-        Write-Host "Tournament name: Primeleague"
+        #Write-Host "Tournament name: Primeleague"
+        $for_js_tournament = $selectTournament.SelectedItem 
     }
     else {
-        Write-Host "Tournament name:" $setCustomTournament.Text
+        #Write-Host "Tournament name:" $setCustomTournament.Text
+        $for_js_tournament = $setCustomTournament.Text
     }
-    $selectedTeam = $selectHomeTeamImage.SelectedItem
 
-    Write-Host "Home image path:" $($teamImages[$selectedTeam])
+    $for_js_homeImage = ($teamImages[$selectHomeTeamImage.SelectedItem])
+    $for_js_gameday = $setGameday.Text
+    $for_js_matchup = $setMatchup.Text    
+    $for_js_enemyImage = $SelectedEnemyImagePath
+
+    Clear-Host
+    Write-Host "$for_js_tournament
+$for_js_gameday
+$for_js_matchup
+$for_js_homeImage
+$for_js_enemyImage"
 }
 $selectEnemyImage_Click = {
     $OpenFileDialog = New-Object -TypeName System.Windows.Forms.OpenFileDialog
@@ -83,5 +116,7 @@ $selectEnemyImage_Click = {
 
 Add-Type -AssemblyName System.Windows.Forms
 . (Join-Path $PSScriptRoot 'screen control panel.designer.ps1')
+
+$pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($for_js_enemyImage)
 
 $PageControls.ShowDialog()
