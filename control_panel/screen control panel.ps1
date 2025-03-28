@@ -63,8 +63,8 @@ $buttonReset_Click = {
     $for_js_enemyImage = $teamImages["Team Placeholder"]
 
     $setCustomTournament.Text = ""
-    $setGameday.Text = $for_js_gameday
-    $setMatchup.Text = $for_js_matchup
+    $setGameday.Text = ""
+    $setMatchup.Text = ""
 
     Clear-Host
     Write-Host "$for_js_tournament

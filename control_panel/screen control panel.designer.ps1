@@ -79,7 +79,7 @@ function InitializeComponent {
     $pageMatchup.Name = [System.String]'pageMatchup'
     $pageMatchup.Padding = (New-Object -TypeName System.Windows.Forms.Padding -ArgumentList @([System.Int32]3))
     $pageMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
-    $pageMatchup.TabIndex = [System.Int32]0
+    $pageMatchup.TabIndex = [System.Int32]19
     $pageMatchup.Text = [System.String]'Matchpage'
     $pageMatchup.UseVisualStyleBackColor = $true
     $pageMatchup.add_Click($OpenFileDialog1_FileOk)
@@ -89,7 +89,7 @@ function InitializeComponent {
     $setCustomTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]81))
     $setCustomTournament.Name = [System.String]'setCustomTournament'
     $setCustomTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
-    $setCustomTournament.TabIndex = [System.Int32]19
+    $setCustomTournament.TabIndex = [System.Int32]1
     $setCustomTournament.add_TextChanged($setCustomTournament_TextChanged)
     #
     #buttonReset
@@ -179,7 +179,7 @@ function InitializeComponent {
     $labelMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]135))
     $labelMatchup.Name = [System.String]'labelMatchup'
     $labelMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
-    $labelMatchup.TabIndex = [System.Int32]6
+    $labelMatchup.TabIndex = [System.Int32]7
     $labelMatchup.Text = [System.String]'Matchup'
     $labelMatchup.add_Click($labelMatchup_Click)
     #
@@ -189,7 +189,7 @@ function InitializeComponent {
     $labelGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]110))
     $labelGameday.Name = [System.String]'labelGameday'
     $labelGameday.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
-    $labelGameday.TabIndex = [System.Int32]5
+    $labelGameday.TabIndex = [System.Int32]6
     $labelGameday.Text = [System.String]'Gameday'
     $labelGameday.add_Click($labelGameday_Click)
     #
@@ -199,7 +199,7 @@ function InitializeComponent {
     $labelTournament.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]214, [System.Int32]56))
     $labelTournament.Name = [System.String]'labelTournament'
     $labelTournament.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]100, [System.Int32]23))
-    $labelTournament.TabIndex = [System.Int32]4
+    $labelTournament.TabIndex = [System.Int32]5
     $labelTournament.Text = [System.String]'Tournament'
     $labelTournament.add_Click($labelTournament_Click)
     #
@@ -209,14 +209,14 @@ function InitializeComponent {
     $setMatchup.Multiline = $true
     $setMatchup.Name = [System.String]'setMatchup'
     $setMatchup.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
-    $setMatchup.TabIndex = [System.Int32]3
+    $setMatchup.TabIndex = [System.Int32]4
     #
     #setGameday
     #
     $setGameday.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]108))
     $setGameday.Name = [System.String]'setGameday'
     $setGameday.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]202, [System.Int32]21))
-    $setGameday.TabIndex = [System.Int32]2
+    $setGameday.TabIndex = [System.Int32]3
     #
     #labelMatchupTitle
     #
@@ -224,7 +224,7 @@ function InitializeComponent {
     $labelMatchupTitle.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]6))
     $labelMatchupTitle.Name = [System.String]'labelMatchupTitle'
     $labelMatchupTitle.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]462, [System.Int32]42))
-    $labelMatchupTitle.TabIndex = [System.Int32]1
+    $labelMatchupTitle.TabIndex = [System.Int32]2
     $labelMatchupTitle.Text = [System.String]'MATCHPAGE CONTROL PANEL'
     #
     #selectTournament
@@ -244,7 +244,7 @@ function InitializeComponent {
     $pagePlayerSpotlight.Name = [System.String]'pagePlayerSpotlight'
     $pagePlayerSpotlight.Padding = (New-Object -TypeName System.Windows.Forms.Padding -ArgumentList @([System.Int32]3))
     $pagePlayerSpotlight.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
-    $pagePlayerSpotlight.TabIndex = [System.Int32]1
+    #$pagePlayerSpotlight.TabIndex = [System.Int32]8
     $pagePlayerSpotlight.Text = [System.String]'Player Spotlight'
     $pagePlayerSpotlight.UseVisualStyleBackColor = $true
     #
@@ -253,7 +253,7 @@ function InitializeComponent {
     $pageComingSoon.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
     $pageComingSoon.Name = [System.String]'pageComingSoon'
     $pageComingSoon.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
-    $pageComingSoon.TabIndex = [System.Int32]2
+    #$pageComingSoon.TabIndex = [System.Int32]9
     $pageComingSoon.Text = [System.String]'Coming Soon ...'
     $pageComingSoon.UseVisualStyleBackColor = $true
     #
