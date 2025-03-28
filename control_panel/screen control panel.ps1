@@ -1,13 +1,13 @@
 $TextBox1_TextChanged = {
 }
-$ComboBox1_SelectedIndexChanged = {
+$selectHomeTeamImage_SelectedIndexChanged = {
     # Get the selected team
     $selectedTeam = $selectHomeTeamImage.SelectedItem
 
     # Define the image paths for each team
     $teamImages = @{
-        "Team BOB" = "d:\New Bob\bob_logo_shadow.png"
-        "Team BBY" = "d:\New Bob\bby_logo_shadow.png"
+        "Team BOB" = "D:\BOB-Stream-Pages\icons\bob_logo_shadow.png"
+        "Team BBY" = "D:\BOB-Stream-Pages\icons\bby_logo_shadow.png"
     }
 
     # Check if the selected team has a corresponding image
@@ -18,6 +18,20 @@ $ComboBox1_SelectedIndexChanged = {
     else {
         # Clear the PictureBox if no image is found
         $pictureHomeTeam.Image = $null
+    }
+}
+$selectTournament_SelectedIndexChanged = {
+    if ($selectTournament.SelectedItem -eq "Primeleague") {
+        $setGameday.ReadOnly = $true
+        $setMatchup.ReadOnly = $true
+        $setCustomTournament.ReadOnly = $true
+        $selectEnemyImage.Enabled = $false
+    }
+    else {
+        $setGameday.ReadOnly = $false
+        $setMatchup.ReadOnly = $false
+        $setCustomTournament.ReadOnly = $false
+        $selectEnemyImage.Enabled = $true
     }
 }
 $Label2_Click = {
