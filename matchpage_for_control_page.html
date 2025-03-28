@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Full Screen SVG</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        svg {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <svg height="2160" width="3840" xmlns="http://www.w3.org/2000/svg">
+        <image height="2160" width="3840" href=".\foreground_right.png" />
+        <g transform="translate(2600,700)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo.png">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="70s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(2200,300)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo.png">
+                <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="60s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(3600,900)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo.png">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="80s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(3200,200)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo_bby.png">
+                <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="70s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(2900,1300)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo.png">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="60s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(2100,1100)">
+            <image x="-195" y="-195" width="390" height="390"  href=".\blurred_logo_bby.png">
+                <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="70s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(3400,1800)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo_bby.png">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="80s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(2400,1700)">
+            <image x="-195" y="-195" width="390" height="390"  href=".\blurred_logo.png">
+                <animateTransform attributeName="transform" type="rotate" from="60" to="420" dur="70s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <g transform="translate(1800,1900)">
+            <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo_bby.png">
+                <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="80s" repeatCount="indefinite"/>
+            </image>
+        </g>
+        <image id="logo" height="700" width="700" x="2560" y="100" href=".\bob_logo_shadow.png" />
+        <image id="enemyLogo" height="700" width="700" x="2560" y="1210" href="https://cdn0.gamesports.net/league_team_logos/207000/207942.jpg?1736719002" />
+        <image height="2160" width="3840" z="2" href=".\foreground_left.png" />
+        <text id="tournament" x="200" y="1080" fill="black" font-family="Outfit" font-size="200" font-weight="bold">Tournament</text>
+        <text id="gameday" x="200" y="1280" fill="#990562" font-family="Outfit" font-size="150" font-weight="normal">Spieltag 1</text>
+        <text id="matchup" x="200" y="1500" fill="#990562" font-family="Outfit" font-size="150" font-weight="bold">BOB vs BBY</text>
+        <text x="2780" y="1080" fill="white" font-family="Outfit" font-size="200" font-weight="bold">VS</text>
+        <rect width="200" height="25" x="2530" y="995" fill="white" />
+        <rect width="200" height="25" x="3090" y="995" fill="white" />
+        <!--<rect width="200" height="25" x="1590" y="995" fill="black" />-->
+    </svg> 
+    <script>
+        const imageBobLogo = '.\\bob_logo_shadow.png';
+        const imageBBYLogo = '.\\BBY_Logo_new.png';
+
+        const tournamentText = document.getElementById('tournament');
+        tournamentText.textContent = 'Tournament';
+        const gamedayText = document.getElementById('gameday');
+        gamedayText.textContent = 'Gameday';
+        const matchupText = document.getElementById('matchup');
+        matchupText.textContent = 'Matchup';
+
+        const logo = document.getElementById('logo');
+        const enemyLogo = document.getElementById('enemyLogo');
+
+        logo.setAttribute('href', imageBobLogo);
+        enemyLogo.setAttribute('href', imageBBYLogo);
+
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
