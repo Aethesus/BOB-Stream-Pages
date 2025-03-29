@@ -72,6 +72,8 @@ $for_js_gameday
 $for_js_matchup
 $for_js_homeImage
 $for_js_enemyImage"
+
+    sendToJSON
 }
 $buttonApply_Click = {
     if ($selectTournament.SelectedItem -eq "Primeleague") {
@@ -94,6 +96,8 @@ $for_js_gameday
 $for_js_matchup
 $for_js_homeImage
 $for_js_enemyImage"
+
+    sendToJSON
 }
 $selectEnemyImage_Click = {
     $OpenFileDialog = New-Object -TypeName System.Windows.Forms.OpenFileDialog
@@ -112,6 +116,19 @@ $selectEnemyImage_Click = {
             $pictureEnemyTeam.Image = $null
         }
     }
+}
+
+function sendToJSON {
+    $jsonData = @{
+        tournament = $for_js_tournament
+        gameday    = $for_js_gameday
+        matchup    = $for_js_matchup
+        homeImage  = $for_js_homeImage
+        enemyImage = $for_js_enemyImage
+    } | ConvertTo-Json -Depth 4
+
+    $jsonFilePath = "D:\BOB-Stream-Pages\ps_js_data.json"
+    Set-Content -Path $jsonFilePath -Value $jsonData -Force
 }
 
 Add-Type -AssemblyName System.Windows.Forms

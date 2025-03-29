@@ -77,22 +77,51 @@
         <!--<rect width="200" height="25" x="1590" y="995" fill="black" />-->
     </svg> 
     <script>
-        const imageBobLogo = '.\\icons\\bob_logo_shadow.png';
-        const imageBBYLogo = '.\\icons\\bby_logo_shadow.png';
+        const defaultBobLogo = '';
+        const defaultEnemyLogo = '';
+        const defaultTournament = 'Tournament';
+        const defaultGameday = 'Gameday';
+        const defaultMatchup = 'Matchup';
 
         const tournamentText = document.getElementById('tournament');
-        tournamentText.textContent = 'Tournament';
         const gamedayText = document.getElementById('gameday');
-        gamedayText.textContent = 'Gameday';
         const matchupText = document.getElementById('matchup');
-        matchupText.textContent = 'Matchup';
-
         const logo = document.getElementById('logo');
         const enemyLogo = document.getElementById('enemyLogo');
 
+        fetch('./ps_js_data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            tournamentText.textContent = data.tournament || defaultTournament;
+            gamedayText.textContent = data.gameday || defaultGameday;
+            matchupText.textContent = data.matchup || defaultMatchup;
+            
+            const homeImage = data.homeImage ? data.homeImage.replace(/\\/g, '/') : defaultBobLogo;
+            const enemyImage = data.enemyImage ? data.enemyImage.replace(/\\/g, '/') : defaultEnemyLogo;
+
+            logo.setAttribute('href', homeImage);
+            enemyLogo.setAttribute('href', enemyImage);
+
+            console.log(homeImage, enemyImage);
+        })
+        .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+        });
+        
+        
+        
+        /*
+        tournamentText.textContent = 'Tournament';
+        gamedayText.textContent = 'Gameday';
+        matchupText.textContent = 'Matchup';
         logo.setAttribute('href', imageBobLogo);
         enemyLogo.setAttribute('href', imageBBYLogo);
-
+        */
     </script>
 </body>
 </html>
