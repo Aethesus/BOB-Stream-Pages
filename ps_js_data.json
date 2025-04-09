@@ -1,7 +1,7 @@
 {
-    "enemyImage":  "D:\\BombaBarbies\\0zzmrq4zfcq81.jpg",
-    "homeImage":  "D:\\BOB-Stream-Pages\\icons\\bby_logo_shadow.png",
-    "matchup":  "3",
-    "gameday":  "2",
-    "tournament":  "1"
+    "enemyImage":  "D:\\BOB-Stream-Pages\\icons\\placeholder_logo.png",
+    "homeImage":  "D:\\BOB-Stream-Pages\\icons\\bob_logo_shadow.png",
+    "matchup":  "Matchup",
+    "gameday":  "Gameday",
+    "tournament":  "Tournament"
 }
