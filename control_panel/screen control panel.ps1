@@ -8,6 +8,18 @@ $teamImages = @{
     "Team Placeholder" = "D:\BOB-Stream-Pages\icons\placeholder_logo.png"
 }
 
+$jsonFilePath = "D:\BOB-Stream-Pages\ps_js_data.json"
+
+$initialJSONData = @"
+    {
+        "enemyImage":  "D:\\BOB-Stream-Pages\\icons\\placeholder_logo.png",
+        "homeImage":  "D:\\BOB-Stream-Pages\\icons\\bob_logo_shadow.png",
+        "matchup":  "Matchup",
+        "gameday":  "Gameday",
+        "tournament":  "Tournament"
+    }
+"@
+
 $for_js_tournament = "Primeleague"
 $for_js_gameday = "Gameday"
 $for_js_matchup = "Matchup"
@@ -127,7 +139,11 @@ function sendToJSON {
         enemyImage = $for_js_enemyImage
     } | ConvertTo-Json -Depth 4
 
-    $jsonFilePath = "D:\BOB-Stream-Pages\ps_js_data.json"
+    if (-Not (Test-Path $jsonFilePath)) {
+        New-Item -Path $jsonFilePath -ItemType File
+        Set-Content -Path $jsonFilePath -Value $initialJSONData -Force
+    }
+    
     Set-Content -Path $jsonFilePath -Value $jsonData -Force
 }
 
