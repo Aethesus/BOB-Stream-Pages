@@ -3,17 +3,17 @@ $OpenFileDialog1_FileOk = {
 Add-Type -AssemblyName "System.Drawing"
 
 $teamImages = @{
-    "Team BOB"         = "D:\BOB-Stream-Pages\icons\bob_logo_shadow.png"
-    "Team BBY"         = "D:\BOB-Stream-Pages\icons\bby_logo_shadow.png"
-    "Team Placeholder" = "D:\BOB-Stream-Pages\icons\placeholder_logo.png"
+    "Team BOB"         = "..\..\icons\bob_logo_shadow.png"
+    "Team BBY"         = "..\..\icons\bby_logo_shadow.png"
+    "Team Placeholder" = "..\..\icons\placeholder_logo.png"
 }
 
-$jsonFilePath = "D:\BOB-Stream-Pages\ps_js_data.json"
+$jsonFilePath = Join-Path $PSScriptRoot "..\ps_js_data.json"
 
 $initialJSONData = @"
     {
-        "enemyImage":  "D:\\BOB-Stream-Pages\\icons\\placeholder_logo.png",
-        "homeImage":  "D:\\BOB-Stream-Pages\\icons\\bob_logo_shadow.png",
+        "enemyImage":  "..\\..\\icons\\placeholder_logo.png",
+        "homeImage":  "..\\..\\icons\\bob_logo_shadow.png",
         "matchup":  "Matchup",
         "gameday":  "Gameday",
         "tournament":  "Tournament"
