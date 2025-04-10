@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./ps_js_data.js?n=1"></script>
     <title>Test Full Screen SVG</title>
     <style>
         body, html {
@@ -66,7 +67,7 @@
             </image>
         </g>
         <image id="logo" height="700" width="700" x="2560" y="100" href="..\icons\bob_logo_shadow.png" />
-        <image id="enemyLogo" height="700" width="700" x="2560" y="1210" href="https://cdn0.gamesports.net/league_team_logos/207000/207942.jpg?1736719002" />
+        <image id="enemyLogo" height="700" width="700" x="2560" y="1210" href="..\icons\bby_logo_shadow.png" />
         <image height="2160" width="3840" z="2" href=".\foreground_left.png" />
         <text id="tournament" x="200" y="1080" fill="black" font-family="Outfit" font-size="200" font-weight="bold">Tournament</text>
         <text id="gameday" x="200" y="1280" fill="#990562" font-family="Outfit" font-size="150" font-weight="normal">Spieltag 1</text>
@@ -89,39 +90,17 @@
         const logo = document.getElementById('logo');
         const enemyLogo = document.getElementById('enemyLogo');
 
-        fetch('./ps_js_data.json')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
-            }
-            return response.json();
-        })
-        .then(data => {
-            tournamentText.textContent = data.tournament || defaultTournament;
-            gamedayText.textContent = data.gameday || defaultGameday;
-            matchupText.textContent = data.matchup || defaultMatchup;
-            
-            const homeImage = data.homeImage ? data.homeImage.replace(/\\/g, '/') : defaultBobLogo;
-            const enemyImage = data.enemyImage ? data.enemyImage.replace(/\\/g, '/') : defaultEnemyLogo;
+        tournamentText.textContent = psJsData.tournament || defaultTournament;
+        gamedayText.textContent = psJsData.gameday || defaultGameday;
+        matchupText.textContent = psJsData.matchup || defaultMatchup;
 
-            logo.setAttribute('href', homeImage);
-            enemyLogo.setAttribute('href', enemyImage);
+        const homeImage = psJsData.homeImage ? psJsData.homeImage.replace(/\\/g, '/') : defaultBobLogo;
+        const enemyImage = psJsData.enemyImage ? psJsData.enemyImage.replace(/\\/g, '/') : defaultEnemyLogo;
 
-            console.log(homeImage, enemyImage);
-        })
-        .catch(error => {
-            console.error('There was a problem with the fetch operation:', error);
-        });
-        
-        
-        
-        /*
-        tournamentText.textContent = 'Tournament';
-        gamedayText.textContent = 'Gameday';
-        matchupText.textContent = 'Matchup';
-        logo.setAttribute('href', imageBobLogo);
-        enemyLogo.setAttribute('href', imageBBYLogo);
-        */
+        logo.setAttribute('href', homeImage);
+        enemyLogo.setAttribute('href', enemyImage);
+
+        console.log(homeImage, enemyImage);
     </script>
 </body>
 </html>
