@@ -3,7 +3,7 @@ $lnkExists = Test-Path -Path "..\*.lnk"
 $lnkFiles = Get-ChildItem -Path "..\" | Where-Object { $_.Name -like "*.lnk" } | Select-Object -ExpandProperty Name
 $targetFiles = Get-ChildItem -Path "..\matchpage" | Where-Object { $_.Name -like "StartScript*" } | Select-Object -ExpandProperty Name
 
-$shortcutIcon = Get-ChildItem -Path "..\icons" | Where-Object { $_.Name -like "enemy_logo*" } | Select-Object -ExpandProperty FullName
+$shortcutIcon = Get-ChildItem -Path "..\icons" | Where-Object { $_.Name -like "*script_icon*" } | Select-Object -ExpandProperty FullName
 
 Write-Host "$lnkFiles"
 Write-Host "$targetFiles"
