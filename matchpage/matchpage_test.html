@@ -18,7 +18,7 @@
     </style>
 </head>
 <body>
-    <svg height="2160" width="3840" xmlns="http://www.w3.org/2000/svg">
+    <svg height="2160" width="3840" xmlns="http://www.w3.org/2000/svg" z-index="0">
         <image height="2160" width="3840" href=".\foreground_right.png" />
         <g transform="translate(2600,700)">
             <image x="-195" y="-195" width="390" height="390" href=".\blurred_logo.png">
@@ -74,6 +74,17 @@
         <text x="2780" y="1080" fill="white" font-family="Outfit" font-size="200" font-weight="bold">VS</text>
         <rect width="200" height="25" x="2530" y="995" fill="white" />
         <rect width="200" height="25" x="3090" y="995" fill="white" />
+
+        <polygon points="0,0 1200,0 1162.5,150 0,150" fill="black" style="fill: url(#gameBarGradient)"/>
+        <polygon points="0,0 1200,0 1162.5,150 0,150" fill="black" style="fill: hsl(0, 0%, 15%);  opacity: 0.5;"/>
+        <defs>
+            <linearGradient id="gameBarGradient">
+                <stop offset="0" stop-color="#D608BC"/>
+                <stop offset="1" stop-color="#fe0877"/>
+            </linearGradient>
+        </defs>
+        <text id="gameBarText" x="150" y="100" fill="white" font-family="Outfit" font-size="75" font-weight="normal" style="text-align: right;">League of Legends</text>
+
     </svg>
 
     <input type="file" id="csvFile" accept=".csv">
