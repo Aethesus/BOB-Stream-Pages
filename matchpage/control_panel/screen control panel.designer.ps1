@@ -1,6 +1,9 @@
 $PageControls = New-Object -TypeName System.Windows.Forms.Form
 [System.Windows.Forms.TabControl]$pagesControl = $null
 [System.Windows.Forms.TabPage]$pageMatchup = $null
+[System.Windows.Forms.Label]$labelVideogame = $null
+[System.Windows.Forms.TextBox]$setVideogame = $null
+[System.Windows.Forms.ComboBox]$selectVideogame = $null
 [System.Windows.Forms.TextBox]$setCustomTournament = $null
 [System.Windows.Forms.Button]$buttonReset = $null
 [System.Windows.Forms.Button]$buttonApply = $null
@@ -40,6 +43,9 @@ function InitializeComponent {
     $selectTournament = (New-Object -TypeName System.Windows.Forms.ComboBox)
     $pagePlayerSpotlight = (New-Object -TypeName System.Windows.Forms.TabPage)
     $pageComingSoon = (New-Object -TypeName System.Windows.Forms.TabPage)
+    $selectVideogame = (New-Object -TypeName System.Windows.Forms.ComboBox)
+    $setVideogame = (New-Object -TypeName System.Windows.Forms.TextBox)
+    $labelVideogame = (New-Object -TypeName System.Windows.Forms.Label)
     $pagesControl.SuspendLayout()
     $pageMatchup.SuspendLayout()
 ([System.ComponentModel.ISupportInitialize]$pictureEnemyTeam).BeginInit()
@@ -59,6 +65,9 @@ function InitializeComponent {
     #
     #pageMatchup
     #
+    $pageMatchup.Controls.Add($labelVideogame)
+    $pageMatchup.Controls.Add($setVideogame)
+    $pageMatchup.Controls.Add($selectVideogame)
     $pageMatchup.Controls.Add($setCustomTournament)
     $pageMatchup.Controls.Add($buttonReset)
     $pageMatchup.Controls.Add($buttonApply)
@@ -257,6 +266,37 @@ function InitializeComponent {
     $pageComingSoon.Text = [System.String]'Coming Soon ...'
     $pageComingSoon.UseVisualStyleBackColor = $true
     #
+    #selectVideogame
+    #
+    $selectVideogame.FormattingEnabled = $true
+    $selectVideogame.Items.AddRange([System.Object[]]@([System.String]'League of Legends', [System.String]'Valorant', [System.String]'Other'))
+    $selectVideogame.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]425))
+    $selectVideogame.Name = [System.String]'selectVideogame'
+    $selectVideogame.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]150, [System.Int32]21))
+    $selectVideogame.TabIndex = [System.Int32]19
+    $selectVideogame.add_SelectedIndexChanged($selectVideogame_SelectedIndexChanged)
+    $selectVideogame.SelectedIndex = 0
+    $selectVideogame.TabIndex = [System.Int32]14
+    #
+    #setVideogame
+    #
+    $setVideogame.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]452))
+    $setVideogame.Name = [System.String]'setVideogame'
+    $setVideogame.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]150, [System.Int32]21))
+    $setVideogame.TabIndex = [System.Int32]15
+    $setVideogame.add_TextChanged($setVideogame_TextChanged)
+    $setVideogame.MaxLength = 20
+    #
+    #labelVideogame
+    #
+    $labelVideogame.Font = (New-Object -TypeName System.Drawing.Font -ArgumentList @([System.String]'Microsoft Sans Serif', [System.Single]11.25, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Point, ([System.Byte][System.Byte]0)))
+    $labelVideogame.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]377))
+    $labelVideogame.Name = [System.String]'labelVideogame'
+    $labelVideogame.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]150, [System.Int32]45))
+    $labelVideogame.TabIndex = [System.Int32]22
+    $labelVideogame.Text = [System.String]'Select Videogame (max. 20 characters)'
+    $labelVideogame.add_Click($Label1_Click)
+    #
     #PageControls
     #
     $PageControls.ClientSize = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]784, [System.Int32]561))
@@ -273,6 +313,9 @@ function InitializeComponent {
     $PageControls.ResumeLayout($false)
     Add-Member -InputObject $PageControls -Name pagesControl -Value $pagesControl -MemberType NoteProperty
     Add-Member -InputObject $PageControls -Name pageMatchup -Value $pageMatchup -MemberType NoteProperty
+    Add-Member -InputObject $PageControls -Name labelVideogame -Value $labelVideogame -MemberType NoteProperty
+    Add-Member -InputObject $PageControls -Name setVideogame -Value $setVideogame -MemberType NoteProperty
+    Add-Member -InputObject $PageControls -Name selectVideogame -Value $selectVideogame -MemberType NoteProperty
     Add-Member -InputObject $PageControls -Name setCustomTournament -Value $setCustomTournament -MemberType NoteProperty
     Add-Member -InputObject $PageControls -Name buttonReset -Value $buttonReset -MemberType NoteProperty
     Add-Member -InputObject $PageControls -Name buttonApply -Value $buttonApply -MemberType NoteProperty

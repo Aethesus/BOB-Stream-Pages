@@ -81,15 +81,15 @@
         <rect width="200" height="25" x="3090" y="995" fill="white" />
         <!--<rect width="200" height="25" x="1590" y="995" fill="black" />-->
         
-        <polygon points="0,0 1000,0 962.5,150 0,150" fill="black" style="fill: url(#gameBarGradient)"/>
-        <polygon points="0,0 1000,0 962.5,150 0,150" fill="black" style="fill: hsl(0, 0%, 15%);  opacity: 0.5;"/>
+        <polygon points="0,0 900,0 862.5,150 0,150" fill="black" style="fill: url(#gameBarGradient)"/>
+        <polygon points="0,0 900,0 862.5,150 0,150" fill="black" style="fill: hsl(0, 0%, 15%);  opacity: 0.5;"/>
         <defs>
             <linearGradient id="gameBarGradient">
                 <stop offset="0" stop-color="#D608BC"/>
                 <stop offset="1" stop-color="#fe0877"/>
             </linearGradient>
         </defs>
-        <text id="gameBarText" x="900" y="100" fill="white" font-family="Outfit" font-size="75" font-weight="normal" text-anchor="end" >League of Legends</text>
+        <text id="gameBarText" x="431.25" y="100" fill="white" font-family="Outfit" font-size="75" font-weight="normal" text-anchor="middle" >Game</text>
 
 
     </svg> 
@@ -99,16 +99,19 @@
         const defaultTournament = 'Tournament';
         const defaultGameday = 'Gameday';
         const defaultMatchup = 'Matchup';
+        const defaultGame = 'Game';
 
         const tournamentText = document.getElementById('tournament');
         const gamedayText = document.getElementById('gameday');
         const matchupText = document.getElementById('matchup');
         const logo = document.getElementById('logo');
         const enemyLogo = document.getElementById('enemyLogo');
+        const gameBarText = document.getElementById('gameBarText');
 
         tournamentText.textContent = psJsData.tournament || defaultTournament;
         gamedayText.textContent = psJsData.gameday || defaultGameday;
         matchupText.textContent = psJsData.matchup || defaultMatchup;
+        gameBarText.textContent = psJsData.videogame || defaultGame;
 
         const homeImage = psJsData.homeImage ? psJsData.homeImage.replace(/\\/g, '/') : defaultBobLogo;
         const enemyImage = psJsData.enemyImage ? psJsData.enemyImage.replace(/\\/g, '/') : defaultEnemyLogo;

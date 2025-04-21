@@ -17,14 +17,18 @@ const psJsData = {
     "matchup":  "Matchup",
     "gameday":  "Gameday",
     "tournament":  "Tournament"
+    "videogame":  "Game"
 };
 "@
+
+$staticVideogames = @("League of Legends", "Valorant")
 
 $for_js_tournament = "Primeleague"
 $for_js_gameday = "Gameday"
 $for_js_matchup = "Matchup"
 $for_js_homeImage = $teamImages["Team BOB"]
 $for_js_enemyImage = $teamImages["Team Placeholder"]
+$for_js_videogame = "Game"
 
 $labelTournament_Click = {
 }
@@ -67,6 +71,7 @@ $buttonReset_Click = {
     $selectHomeTeamImage.SelectedIndex = 0
     $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($for_js_enemyImage)
     $selectTournament.SelectedIndex = 0
+    $selectVideogame.SelectedIndex = 0
 
     $for_js_tournament = "Tournament"
     $for_js_gameday = "Gameday"
@@ -77,6 +82,7 @@ $buttonReset_Click = {
     $setCustomTournament.Text = ""
     $setGameday.Text = ""
     $setMatchup.Text = ""
+    $setVideogame.Text = ""
 
     Clear-Host
     Write-Host "$for_js_tournament
@@ -88,6 +94,8 @@ $for_js_enemyImage"
     sendToJS
 }
 $buttonApply_Click = {
+    Write-Host $for_js_videogame
+
     if ($selectTournament.SelectedItem -eq "Primeleague") {
         #Write-Host "Tournament name: Primeleague"
         $for_js_tournament = $selectTournament.SelectedItem 
@@ -95,6 +103,13 @@ $buttonApply_Click = {
     else {
         #Write-Host "Tournament name:" $setCustomTournament.Text
         $for_js_tournament = $setCustomTournament.Text
+    }
+
+    if ($staticVideogames -contains $selectVideogame.SelectedItem) {
+        $for_js_videogame = $selectVideogame.SelectedItem 
+    }
+    else {
+        $for_js_videogame = $setVideogame.Text
     }
 
     $for_js_homeImage = ($teamImages[$selectHomeTeamImage.SelectedItem])
@@ -107,7 +122,8 @@ $buttonApply_Click = {
 $for_js_gameday
 $for_js_matchup
 $for_js_homeImage
-$for_js_enemyImage"
+$for_js_enemyImage
+$for_js_videogame"
 
     Write-Host "Selected Enemy Image Path: $global:SelectedEnemyImagePath"
 
@@ -161,12 +177,37 @@ $selectEnemyImage_Click = {
 
             # Update the preview image
             $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($targetEnemyImagePath)
-        } catch {
+        }
+        catch {
             Write-Host "Failed to copy image: $_"
             $pictureEnemyTeam.Image = $null
         }
     }
 }
+
+$selectVideogame_SelectedIndexChanged = {
+
+    if ($staticVideogames -contains $selectVideogame.SelectedItem) {
+        $setVideogame.ReadOnly = $true
+
+        $selectVideogame_content = $selectVideogame.SelectedItem
+        $for_js_videogame = $selectVideogame.SelectedItem
+    }
+    else {
+        $setVideogame.ReadOnly = $false
+    }
+}
+
+$setVideogame_TextChanged = {
+    $selectVideogame_content = $setVideogame.Text
+    $for_js_videogame = $setVideogame.Text
+    
+    if ($($setVideogame.Text).Length -gt 20) {
+        Write-Host "Vallah Warum" 
+    }
+}
+
+Write-Host $for_js_videogame
 
 function sendToJS {
     $jsData = "const psJsData = " + (@{
@@ -175,6 +216,7 @@ function sendToJS {
             matchup    = $for_js_matchup
             homeImage  = $for_js_homeImage
             enemyImage = $global:SelectedEnemyImagePath
+            videogame  = $for_js_videogame
         } | ConvertTo-Json -Depth 4) + ";"
 
     if (-Not (Test-Path $jsFilePath)) {
