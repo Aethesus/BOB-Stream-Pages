@@ -1,43 +1,28 @@
-$lnkExists = Test-Path -Path "..\*.lnk"
+$controlpanelFolder = "control_panel"
 
-$lnkFiles = Get-ChildItem -Path "..\" | Where-Object { $_.Name -like "*.lnk" } | Select-Object -ExpandProperty Name
-$targetFiles = Get-ChildItem -Path "..\matchpage" | Where-Object { $_.Name -like "StartScript*" } | Select-Object -ExpandProperty Name
+$lnkFile = Get-ChildItem -Path "..\" | Where-Object { $_.Name -like "*.lnk" } | Select-Object -ExpandProperty Name
+$targetFile = Get-ChildItem -Path "..\$controlpanelFolder" | Where-Object { $_.Name -like "*.bat" } | Select-Object -ExpandProperty Name
 
-$shortcutIcon = Get-ChildItem -Path "..\icons" | Where-Object { $_.Name -like "*script_icon*" } | Select-Object -ExpandProperty FullName
+$shortcutIcon = Get-ChildItem -Path "..\art\icons" | Where-Object { $_.Name -like "*script_icon*" } | Select-Object -ExpandProperty FullName
 
-Write-Host "$lnkFiles"
-Write-Host "$targetFiles"
+$currentDirectory = Get-Location | Select-Object -ExpandProperty Path
+$parentDirectory = Split-Path -Path $currentDirectory -Parent
 
-foreach ($targetFile in $targetFiles) {
-    if ($targetFile -like "*HTML*") {
-        $targetWithHTML = $targetFile
-    }
-    else {
-        $targetWithoutHTML = $targetFile
-    }
-}
+$shortcutPath = $parentDirectory + "\" + $lnkFile
 
-foreach ($lnkFile in $lnkFiles) {
-
-    $currentDirectory = Get-Location | Select-Object -ExpandProperty Path
-    $parentDirectory = Split-Path -Path $currentDirectory -Parent
-
-    $shortcutPath = $parentDirectory + "\" + $lnkFile
-
-    if ($lnkFile -like "*WithHTML*") {
-        $newTarget = "$parentDirectory\matchpage\$targetWithHTML"
-    }
-    else {
-        Write-Host "NoHTML" + $lnkFile
-        $newTarget = "$parentDirectory\matchpage\$targetWithoutHTML"
-    }
+$newTarget = "$parentDirectory\$controlpanelFolder\$targetFile"
     
-    $WshShell = New-Object -ComObject WScript.Shell
-    $Shortcut = $WshShell.CreateShortcut($shortcutPath)
-    $Shortcut.TargetPath = $newTarget
-    $Shortcut.IconLocation = $shortcutIcon
-    $Shortcut.Save()
-}
+$WshShell = New-Object -ComObject WScript.Shell
+$Shortcut = $WshShell.CreateShortcut($shortcutPath)
+$Shortcut.TargetPath = $newTarget
+$Shortcut.IconLocation = $shortcutIcon
+$Shortcut.Save()
+
+Write-Host $lnkFile
+Write-Host $targetFile
+Write-Host $shortcutPath
+Write-Host $newTarget
+Write-Host $shortcutIcon
 
 $wshell = New-Object -ComObject Wscript.Shell
 

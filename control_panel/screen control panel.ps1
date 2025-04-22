@@ -3,17 +3,17 @@ $OpenFileDialog1_FileOk = {
 Add-Type -AssemblyName "System.Drawing"
 
 $teamImages = @{
-    "Team BOB"         = "..\\..\\icons\\bob_logo_shadow.png"
-    "Team BBY"         = "..\\..\\icons\\bby_logo_shadow.png"
-    "Team Placeholder" = "..\\..\\icons\\placeholder_logo.png"
+    "Team BOB"         = "..\\art\\icons\\bob_logo_shadow.png"
+    "Team BBY"         = "..\\art\\icons\\bby_logo_shadow.png"
+    "Team Placeholder" = "..\\art\\icons\\placeholder_logo.png"
 }
 
-$jsFilePath = Join-Path $PSScriptRoot "..\ps_js_data.js"
+$jsFilePath = Join-Path $PSScriptRoot "..\matchpage\ps_js_data.js"
 
 $initialJSData = @"
 const psJsData = {
-    "enemyImage":  "..\\..\\icons\\placeholder_logo.png",
-    "homeImage":  "..\\..\\icons\\bob_logo_shadow.png",
+    "enemyImage":  "..\\art\\icons\\placeholder_logo.png",
+    "homeImage":  "..\\art\\icons\\bob_logo_shadow.png",
     "matchup":  "Matchup",
     "gameday":  "Gameday",
     "tournament":  "Tournament"
@@ -131,7 +131,7 @@ $for_js_videogame"
 }
 
 # Initialize with a default value
-$global:SelectedEnemyImagePath = "..\\..\\icons\\placeholder_logo.png"
+$global:SelectedEnemyImagePath = "..\\art\\icons\\placeholder_logo.png"
 
 # Ensure the selected image is copied and the path is updated
 $selectEnemyImage_Click = {
@@ -144,7 +144,7 @@ $selectEnemyImage_Click = {
         $fileExtension = [System.IO.Path]::GetExtension($selectedFilePath)
 
         # Ensure the icons folder exists
-        $iconsFolderPath = (Resolve-Path -Path (Join-Path $PSScriptRoot "..\..\icons")).Path
+        $iconsFolderPath = (Resolve-Path -Path (Join-Path $PSScriptRoot "..\art\icons")).Path
         if (-Not (Test-Path $iconsFolderPath)) {
             New-Item -Path $iconsFolderPath -ItemType Directory -Force
         }
@@ -173,7 +173,7 @@ $selectEnemyImage_Click = {
             Write-Host "Image copied successfully to: $targetEnemyImagePath"
 
             # Update the global variable with the relative path
-            $global:SelectedEnemyImagePath = "..\\..\\icons\\enemy_logo" + $fileExtension
+            $global:SelectedEnemyImagePath = "..\\art\\icons\\enemy_logo" + $fileExtension
 
             # Update the preview image
             $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($targetEnemyImagePath)
@@ -235,7 +235,7 @@ if (Test-Path $global:SelectedEnemyImagePath) {
 }
 else {
     Write-Host "Image not found: $global:SelectedEnemyImagePath. Using placeholder."
-    $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile("..\\..\\icons\\placeholder_logo.png")
+    $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile("..\\art\\icons\\placeholder_logo.png")
 }
 
 $PageControls.ShowDialog()
