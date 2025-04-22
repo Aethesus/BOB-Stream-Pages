@@ -274,7 +274,7 @@ function InitializeComponent {
     #labelVideogame
     #
     $labelVideogame.Font = (New-Object -TypeName System.Drawing.Font -ArgumentList @([System.String]'Microsoft Sans Serif', [System.Single]11.25, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Point, ([System.Byte][System.Byte]0)))
-    $labelVideogame.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]377))
+    $labelVideogame.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]6, [System.Int32]380))
     $labelVideogame.Name = [System.String]'labelVideogame'
     $labelVideogame.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]150, [System.Int32]45))
     $labelVideogame.TabIndex = [System.Int32]22
