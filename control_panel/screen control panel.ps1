@@ -3,8 +3,8 @@ Add-Type -AssemblyName "System.Drawing"
 $htmlPath = "..\matchpage\matchpage_for_control_page.html"
 
 $teamImages = @{
-    "Team BOB"         = "..\\art\\icons\\bob_logo_shadow.png"
-    "Team BBY"         = "..\\art\\icons\\bby_logo_shadow.png"
+    "Team BOB"         = "..\\art\\icons\\bob_logo.png"
+    "Team BBY"         = "..\\art\\icons\\bby_logo.png"
     "Team Placeholder" = "..\\art\\icons\\placeholder_logo.png"
 }
 
@@ -13,7 +13,7 @@ $jsFilePath = Join-Path $PSScriptRoot "..\matchpage\ps_js_data.js"
 $initialJSData = @"
 const psJsData = {
     "enemyImage":  "..\\art\\icons\\placeholder_logo.png",
-    "homeImage":  "..\\art\\icons\\bob_logo_shadow.png",
+    "homeImage":  "..\\art\\icons\\bob_logo.png",
     "matchup":  "Matchup",
     "gameday":  "Gameday",
     "tournament":  "Tournament"

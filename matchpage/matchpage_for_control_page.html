@@ -24,6 +24,32 @@
 </head>
 <body>
     <svg height="2160" width="3840" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="shadow">
+              <feDropShadow dx="0" dy="0" stdDeviation="7.5" flood-color="black" />
+            </filter>
+        </defs>
+
+        <defs>
+            <linearGradient id="gameBarGradient">
+                <stop offset="0" stop-color="#D608BC"/>
+                <stop offset="1" stop-color="#fe0877"/>
+            </linearGradient>
+        </defs>
+
+        <defs>
+            <filter id="right-shadow" x="0" y="0" width="150%" height="100%">
+              <feOffset in="SourceAlpha" dx="0" dy="0" result="offset"/>
+              <feGaussianBlur in="offset" stdDeviation="10" result="blur"/>       
+              <feComposite in="blur" in2="SourceAlpha" operator="out" result="shadowOnly"/>
+              
+              <feMerge>
+                <feMergeNode in="shadowOnly"/>
+                <feMergeNode in="SourceGraphic"/>
+              </feMerge>
+            </filter>
+          </defs>
+
         <image height="2160" width="3840" href="..\art\art_matchpage\foreground_right.png" />
         <g transform="translate(2600,700)">
             <image x="-195" y="-195" width="390" height="390" href="..\art\art_matchpage\blurred_logo.png">
@@ -70,27 +96,20 @@
                 <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="80s" repeatCount="indefinite"/>
             </image>
         </g>
-        <image id="logo" height="700" width="700" x="2560" y="100" href="..\art\icons\bob_logo_shadow.png" />
-        <image id="enemyLogo" height="700" width="700" x="2560" y="1210" href="..\art\icons\bby_logo_shadow.png" />
-        <image height="2160" width="3840" z="2" href="..\art\art_matchpage\foreground_left.png" />
-        <text id="tournament" x="200" y="1080" fill="black" font-family="Outfit" font-size="200" font-weight="bold">Tournament</text>
+        <image id="logo" height="700" width="700" x="2560" y="100" href="..\art\icons\bob_logo.png" filter="url(#shadow)"/>
+        <image id="enemyLogo" height="700" width="700" x="2560" y="1210" href="..\art\icons\bby_logo.png" filter="url(#shadow)"/>
+        <image height="2160" width="3840" z="2" href="..\art\art_matchpage\foreground_left.png" filter="url(#right-shadow)" />
+        <text id="tournament" x="200" y="1080" fill="black" font-family="Outfit" font-size="200" font-weight="bold" >Tournament</text>
         <text id="gameday" x="200" y="1280" fill="#990562" font-family="Outfit" font-size="150" font-weight="normal">Spieltag 1</text>
         <text id="matchup" x="200" y="1500" fill="#990562" font-family="Outfit" font-size="150" font-weight="bold">BOB vs BBY</text>
-        <text x="2780" y="1080" fill="white" font-family="Outfit" font-size="200" font-weight="bold">VS</text>
-        <rect width="200" height="25" x="2530" y="995" fill="white" />
-        <rect width="200" height="25" x="3090" y="995" fill="white" />
+        <text x="2780" y="1080" fill="white" font-family="Outfit" font-size="200" font-weight="bold" filter="url(#shadow)">VS</text>
+        <rect width="200" height="25" x="2530" y="995" fill="white" filter="url(#shadow)"/>
+        <rect width="200" height="25" x="3090" y="995" fill="white" filter="url(#shadow)"/>
         <!--<rect width="200" height="25" x="1590" y="995" fill="black" />-->
         
-        <polygon points="0,0 900,0 862.5,150 0,150" fill="black" style="fill: url(#gameBarGradient)"/>
+        <polygon points="0,0 900,0 862.5,150 0,150" fill="black" style="fill: url(#gameBarGradient)" filter="url(#shadow)"/>
         <polygon points="0,0 900,0 862.5,150 0,150" fill="black" style="fill: hsl(0, 0%, 15%);  opacity: 0.5;"/>
-        <defs>
-            <linearGradient id="gameBarGradient">
-                <stop offset="0" stop-color="#D608BC"/>
-                <stop offset="1" stop-color="#fe0877"/>
-            </linearGradient>
-        </defs>
         <text id="gameBarText" x="431.25" y="100" fill="white" font-family="Outfit" font-size="75" font-weight="normal" text-anchor="middle" >Game</text>
-
 
     </svg> 
     <script>
