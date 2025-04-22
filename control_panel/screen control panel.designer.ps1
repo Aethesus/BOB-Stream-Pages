@@ -20,6 +20,7 @@ $PageControls = New-Object -TypeName System.Windows.Forms.Form
 [System.Windows.Forms.TextBox]$setGameday = $null
 [System.Windows.Forms.Label]$labelMatchupTitle = $null
 [System.Windows.Forms.ComboBox]$selectTournament = $null
+[System.Windows.Forms.Button]$openHTML = $null
 [System.Windows.Forms.TabPage]$pagePlayerSpotlight = $null
 [System.Windows.Forms.TabPage]$pageComingSoon = $null
 function InitializeComponent {
@@ -41,11 +42,12 @@ function InitializeComponent {
     $setGameday = (New-Object -TypeName System.Windows.Forms.TextBox)
     $labelMatchupTitle = (New-Object -TypeName System.Windows.Forms.Label)
     $selectTournament = (New-Object -TypeName System.Windows.Forms.ComboBox)
-    $pagePlayerSpotlight = (New-Object -TypeName System.Windows.Forms.TabPage)
-    $pageComingSoon = (New-Object -TypeName System.Windows.Forms.TabPage)
     $selectVideogame = (New-Object -TypeName System.Windows.Forms.ComboBox)
     $setVideogame = (New-Object -TypeName System.Windows.Forms.TextBox)
     $labelVideogame = (New-Object -TypeName System.Windows.Forms.Label)
+    $openHTML = (New-Object -TypeName System.Windows.Forms.Button)
+    $pagePlayerSpotlight = (New-Object -TypeName System.Windows.Forms.TabPage)
+    $pageComingSoon = (New-Object -TypeName System.Windows.Forms.TabPage)
     $pagesControl.SuspendLayout()
     $pageMatchup.SuspendLayout()
 ([System.ComponentModel.ISupportInitialize]$pictureEnemyTeam).BeginInit()
@@ -84,6 +86,7 @@ function InitializeComponent {
     $pageMatchup.Controls.Add($setGameday)
     $pageMatchup.Controls.Add($labelMatchupTitle)
     $pageMatchup.Controls.Add($selectTournament)
+    $pageMatchup.Controls.Add($openHTML)
     $pageMatchup.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
     $pageMatchup.Name = [System.String]'pageMatchup'
     $pageMatchup.Padding = (New-Object -TypeName System.Windows.Forms.Padding -ArgumentList @([System.Int32]3))
@@ -247,25 +250,6 @@ function InitializeComponent {
     $selectTournament.add_SelectedIndexChanged($selectTournament_SelectedIndexChanged)
     $selectTournament.SelectedIndex = 0
     #
-    #pagePlayerSpotlight
-    #
-    $pagePlayerSpotlight.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
-    $pagePlayerSpotlight.Name = [System.String]'pagePlayerSpotlight'
-    $pagePlayerSpotlight.Padding = (New-Object -TypeName System.Windows.Forms.Padding -ArgumentList @([System.Int32]3))
-    $pagePlayerSpotlight.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
-    #$pagePlayerSpotlight.TabIndex = [System.Int32]8
-    $pagePlayerSpotlight.Text = [System.String]'Player Spotlight'
-    $pagePlayerSpotlight.UseVisualStyleBackColor = $true
-    #
-    #pageComingSoon
-    #
-    $pageComingSoon.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
-    $pageComingSoon.Name = [System.String]'pageComingSoon'
-    $pageComingSoon.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
-    #$pageComingSoon.TabIndex = [System.Int32]9
-    $pageComingSoon.Text = [System.String]'Coming Soon ...'
-    $pageComingSoon.UseVisualStyleBackColor = $true
-    #
     #selectVideogame
     #
     $selectVideogame.FormattingEnabled = $true
@@ -296,6 +280,35 @@ function InitializeComponent {
     $labelVideogame.TabIndex = [System.Int32]22
     $labelVideogame.Text = [System.String]'Select Videogame (max. 20 characters)'
     $labelVideogame.add_Click($Label1_Click)
+    #
+    #openHTML
+    #
+    $openHTML.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]168, [System.Int32]482))
+    $openHTML.Name = [System.String]'openHTML'
+    $openHTML.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]75, [System.Int32]23))
+    $openHTML.TabIndex = [System.Int32]19
+    $openHTML.Text = [System.String]'Open HTML'
+    $openHTML.UseVisualStyleBackColor = $true
+    $openHTML.add_Click($openHTML_Click)
+    #
+    #pagePlayerSpotlight
+    #
+    $pagePlayerSpotlight.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
+    $pagePlayerSpotlight.Name = [System.String]'pagePlayerSpotlight'
+    $pagePlayerSpotlight.Padding = (New-Object -TypeName System.Windows.Forms.Padding -ArgumentList @([System.Int32]3))
+    $pagePlayerSpotlight.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
+    #$pagePlayerSpotlight.TabIndex = [System.Int32]8
+    $pagePlayerSpotlight.Text = [System.String]'Player Spotlight'
+    $pagePlayerSpotlight.UseVisualStyleBackColor = $true
+    #
+    #pageComingSoon
+    #
+    $pageComingSoon.Location = (New-Object -TypeName System.Drawing.Point -ArgumentList @([System.Int32]4, [System.Int32]22))
+    $pageComingSoon.Name = [System.String]'pageComingSoon'
+    $pageComingSoon.Size = (New-Object -TypeName System.Drawing.Size -ArgumentList @([System.Int32]752, [System.Int32]511))
+    #$pageComingSoon.TabIndex = [System.Int32]9
+    $pageComingSoon.Text = [System.String]'Coming Soon ...'
+    $pageComingSoon.UseVisualStyleBackColor = $true
     #
     #PageControls
     #

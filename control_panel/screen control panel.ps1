@@ -1,6 +1,6 @@
-$OpenFileDialog1_FileOk = {
-}
 Add-Type -AssemblyName "System.Drawing"
+
+$htmlPath = "..\matchpage\matchpage_for_control_page.html"
 
 $teamImages = @{
     "Team BOB"         = "..\\art\\icons\\bob_logo_shadow.png"
@@ -203,7 +203,17 @@ $setVideogame_TextChanged = {
     $for_js_videogame = $setVideogame.Text
     
     if ($($setVideogame.Text).Length -gt 20) {
-        Write-Host "Vallah Warum" 
+        Write-Host "Text exceeds 20 characters" 
+    }
+}
+
+$openHTML_Click = {
+    $htmlPathTest = Test-Path $htmlPath
+    if ($htmlPathTest -eq $true) {
+        Start-Process $htmlPath
+    }
+    else {
+        Write-Host "HTML file not found at path: $htmlPath"
     }
 }
 
