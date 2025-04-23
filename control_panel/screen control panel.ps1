@@ -130,37 +130,36 @@ $for_js_videogame"
     sendToJS
 }
 
-# Initialize with a default value
 $global:SelectedEnemyImagePath = "..\\art\\icons\\placeholder_logo.png"
 
-# Ensure the selected image is copied and the path is updated
 $selectEnemyImage_Click = {
     $OpenFileDialog = New-Object -TypeName System.Windows.Forms.OpenFileDialog
-    $OpenFileDialog.Filter = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp|All Files (*.*)|*.*"
+    $OpenFileDialog.Filter = "Image Files (*.png;*.jpg)|*.png;*.jpg" # Restrict to PNG and JPG files
     $OpenFileDialog.Title = "Select an Image File"
 
     if ($OpenFileDialog.ShowDialog() -eq [System.Windows.Forms.DialogResult]::OK) {
         $selectedFilePath = $OpenFileDialog.FileName
         $fileExtension = [System.IO.Path]::GetExtension($selectedFilePath)
 
-        # Ensure the icons folder exists
+        if ($fileExtension -notin @(".png", ".jpg")) {
+            Write-Host "Invalid file type selected. Only PNG and JPG files are allowed."
+            return
+        }
+
         $iconsFolderPath = (Resolve-Path -Path (Join-Path $PSScriptRoot "..\art\icons")).Path
         if (-Not (Test-Path $iconsFolderPath)) {
             New-Item -Path $iconsFolderPath -ItemType Directory -Force
         }
 
-        # Define the target path for the copied image with the desired name
         $targetEnemyImagePath = Join-Path $iconsFolderPath ("enemy_logo" + $fileExtension)
         Write-Host "Resolved Path: $targetEnemyImagePath"
 
-        # Release the lock on the current image
         if ($pictureEnemyTeam.Image -ne $null) {
             $pictureEnemyTeam.Image = $null
             [System.GC]::Collect()
             [System.GC]::WaitForPendingFinalizers()
         }
 
-        # Delete any existing enemy_logo file in the folder
         $existingEnemyLogoFiles = Get-ChildItem -Path $iconsFolderPath -Filter "enemy_logo.*"
         foreach ($file in $existingEnemyLogoFiles) {
             Remove-Item -Path $file.FullName -Force
@@ -168,14 +167,11 @@ $selectEnemyImage_Click = {
         }
 
         try {
-            # Copy the selected image to the target path with the new name
             Copy-Item -Path $selectedFilePath -Destination $targetEnemyImagePath -Force
             Write-Host "Image copied successfully to: $targetEnemyImagePath"
 
-            # Update the global variable with the relative path
             $global:SelectedEnemyImagePath = "..\\art\\icons\\enemy_logo" + $fileExtension
 
-            # Update the preview image
             $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($targetEnemyImagePath)
         }
         catch {
@@ -239,7 +235,6 @@ function sendToJS {
 Add-Type -AssemblyName System.Windows.Forms
 . (Join-Path $PSScriptRoot 'screen control panel.designer.ps1')
 
-# Ensure the image path is valid before assigning it
 if (Test-Path $global:SelectedEnemyImagePath) {
     $pictureEnemyTeam.Image = [System.Drawing.Image]::FromFile($global:SelectedEnemyImagePath)
 }

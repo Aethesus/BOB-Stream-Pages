@@ -12,4 +12,4 @@ Note: This is still a very early work in progress
 
 (Planned) The 'Player Spotlight': For in between matches with infos about certain players
 
-(Planned) The 'Table': For in between matches with inmfos about the current Tournament (if it has a table)
+(Planned) The 'Table': For in between matches with infos about the current Tournament (if it has a table)
