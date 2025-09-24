@@ -1,0 +1,42 @@
+<svg viewBox="0 0 16 9" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+    <!--<rect x="0" y="0" width="16" height="9" fill="hsla(0, 0%, 0%, 0)" />-->
+    <image id="reference" 
+        href="reference/stream_ui.png" 
+        x="0" 
+        y="0" 
+        width="16" 
+        height="9" />
+    <text id="patchText" x="8" y="4.5" text-anchor="middle" alignment-baseline="middle" font-size="1" fill="white">
+        Loading...
+    </text>
+    <script type="application/ecmascript">
+        <![CDATA[
+        async function getCurrentLeaguePatch() {
+            const url = "https://ddragon.leagueoflegends.com/api/versions.json";
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const versions = await response.json();
+                const currentPatch = versions[0]; // First version is the current patch
+                var patchText = document.getElementById('patchText');
+                if (patchText) {
+                    patchText.textContent = currentPatch;
+                }
+                return currentPatch;
+            } catch (error) {
+                console.error("Error fetching patch version:", error);
+                var patchText = document.getElementById('patchText');
+                if (patchText) {
+                    patchText.textContent = "Error";
+                }
+                return null;
+            }
+        }
+        getCurrentLeaguePatch();
+        ]]>
+    </script>
+</svg>
+
+
