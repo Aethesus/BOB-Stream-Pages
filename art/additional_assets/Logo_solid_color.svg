@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1920 1200" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g clip-path="url(#_clip1)">
+        <path d="M960,201.857L1304.8,400.928L1304.8,799.072L960,998.143L615.198,799.072L615.198,400.928L960,201.857ZM960,273.836L677.533,436.918L677.533,763.082L960,926.164L1242.47,763.082L1242.47,436.918L960,273.836Z" style="fill: #fe0877;"/>
+        <path d="M979.536,390.232L979.536,338.705L1196.06,463.713L1196.06,736.287L979.536,861.295L979.536,813.909L979.536,390.232ZM1039.01,757.083L1135.54,701.348L1135.54,630.135L1039.01,630.135L1039.01,757.083ZM1039.01,569.865L1135.54,569.865L1135.54,498.652L1039.01,442.917L1039.01,569.865Z
+        M1154.806,600 L1196.06,570 L1196.06,630 Z" style="fill:#fe0877; fill-rule:evenodd; clip-rule:evenodd;"/>
+        <path d="M940.464,338.705L940.464,861.295L723.944,736.287L723.944,463.713L940.464,338.705ZM880.995,630.135L784.459,630.135L784.459,701.348L880.995,757.083L880.995,630.135ZM880.995,442.917L784.459,498.652L784.459,569.865L880.995,569.865L880.995,442.917Z
+        M765.198,600 L723.944,570 L723.944,630 Z" style="fill:#fe0877; fill-rule:evenodd; clip-rule:evenodd;"/>
+    </g>
+</svg>
